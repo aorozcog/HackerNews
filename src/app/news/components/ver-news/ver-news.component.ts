@@ -28,13 +28,14 @@ export class VerNewsComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  //User clicks on the paginator
   loadPage(event: PageEvent) {
     this.pmin = event.pageIndex * event.pageSize;
     this.pmax = this.pmin + event.pageSize;
   }
 
   loadStories(range: number[]) {
-    //Get top news and put it in a list
+    //Get top news and put them on a list
     this.apiService.getTopNews().subscribe((data: any) => {
       this.newsIdList = data;
       this.newsIdList = this.newsIdList;
