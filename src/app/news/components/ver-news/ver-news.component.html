@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">Hacker News</mat-toolbar>
+
+<div>
+    <mat-card *ngFor="let story of fullNewsList.slice(pmin,pmax); let i = index">
+        <!-- if there is no url redirect to https://news.ycombinator.com/item?id={id} -->
+        <mat-card-title>
+            {{pmin + i + 1}} - <a [href]="story.url ? story.url : 'https://news.ycombinator.com/item?id=' + story.id" target="_blank"> {{story.title}}</a>
+        </mat-card-title>
+        <mat-card-subtitle>by {{story.by}}</mat-card-subtitle>
+    </mat-card>
+
+    <mat-paginator #paginator [length]="fullNewsList.length" [pageSize]="50" [pageSizeOptions]="[50]" (page)="loadPage($event)">
+</mat-paginator>
+</div>
